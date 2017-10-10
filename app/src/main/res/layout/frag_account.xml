@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="10"
+    android:background="#000000">
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/image_view"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_weight="3"
+        android:background="#111111"
+        app:srcCompat="@drawable/imagemgithub2" />
+
+    <android.support.v7.widget.AppCompatEditText
+        android:id="@+id/edt_your_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_weight="1"
+        android:inputType="textPersonName"
+        android:paddingLeft="10dp"
+        android:textColor="#ffffff"
+        android:hint="Your email"
+        android:textColorHint="#ffffff" />
+
+    <android.support.v7.widget.AppCompatEditText
+        android:id="@+id/edt_create_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_weight="1"
+        android:inputType="textPassword"
+        android:paddingLeft="10dp"
+        android:textColor="#ffffff"
+        android:hint="Create a password"
+        android:textColorHint="#ffffff"/>
+
+    <android.support.v7.widget.AppCompatEditText
+        android:id="@+id/edt_confirm_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_weight="1"
+        android:inputType="textPassword"
+        android:paddingLeft="10dp"
+        android:textColor="#ffffff"
+        android:hint="Confirm your password"
+        android:textColorHint="#ffffff"/>
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/btn_account"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="14px"
+        android:background="#eaae00"
+        android:text="Create an account"
+        android:textAllCaps="false"
+        android:textColor="#ffffff"
+        android:textSize="16sp" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/txt1"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:layout_marginTop="20dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="By signing up, I accept Company Logo's"
+        android:textAllCaps="false"
+        android:textColor="#ffffff"
+        android:textSize="14sp" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/txt_terms_service"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="Terms of Service"
+        android:textAllCaps="false"
+        android:textColor="#eaae00"
+        android:textSize="14sp" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/txt_privacy_policy"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="Privacy Policy"
+        android:textAllCaps="false"
+        android:textColor="#eaae00"
+        android:textSize="14sp" />
+</LinearLayout>
