@@ -53,7 +53,6 @@ public class FragListUsers extends Fragment{
 
                     recyclerView.setAdapter(new MyAdapter(listUsers, (AppCompatActivity) getActivity()));
                     recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
-                    //recyclerView
                 }
             }
 

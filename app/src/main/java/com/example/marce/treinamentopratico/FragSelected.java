@@ -3,9 +3,11 @@ package com.example.marce.treinamentopratico;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,6 +28,7 @@ import static com.example.marce.treinamentopratico.GitHubServiceUser.URL_BaseUse
 public class FragSelected extends Fragment{
     public CircleImageView fotoSel;
     public TextView txtIDSel, txtLoginSel, txtTypeSel, txtBioSel;
+    public Button btnReposit;
     public User user;
     private String usuarioAtual;
 
@@ -39,11 +42,10 @@ public class FragSelected extends Fragment{
         txtLoginSel = (TextView)rootView.findViewById(R.id.txtLogin_sel);
         txtTypeSel = (TextView)rootView.findViewById(R.id.txtType_sel);
         txtBioSel = (TextView)rootView.findViewById(R.id.txtBio_sel);
+        btnReposit = (Button)rootView.findViewById(R.id.btn_reposit);
 
         //Receber nome do usuário atual
         usuarioAtual = getArguments().getString("nome");
-
-
 
         // Trata Retrofit e GitHub
         Retrofit retrofit = new Retrofit.Builder()
@@ -52,8 +54,7 @@ public class FragSelected extends Fragment{
                 .build();
 
         GitHubServiceUser serviceUser = retrofit.create(GitHubServiceUser.class);
-        Call<User> requestCatalog = serviceUser.dataUser(usuarioAtual); //MarceloFelizardo
-
+        Call<User> requestCatalog = serviceUser.dataUser(usuarioAtual);
 
         requestCatalog.enqueue(new Callback<User>() {
             @Override
@@ -80,6 +81,20 @@ public class FragSelected extends Fragment{
                         Toast.LENGTH_SHORT).show();
             }
         });
+
+        btnReposit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putString("nome2",usuarioAtual);
+
+                FragListReposit fragListReposit = new FragListReposit();
+                fragListReposit.setArguments(bundle);
+
+                ChangeFragments.trocaFrag((AppCompatActivity) getActivity(), fragListReposit, R.id.local_main);
+            }
+        });
+
 
         return rootView;
     }

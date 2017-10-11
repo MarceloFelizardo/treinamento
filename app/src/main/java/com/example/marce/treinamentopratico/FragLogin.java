@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import com.example.marce.treinamentopratico.ChangeFragments;
+import okhttp3.Credentials;
 
 public class FragLogin extends Fragment implements View.OnClickListener{
 
@@ -36,13 +37,15 @@ public class FragLogin extends Fragment implements View.OnClickListener{
         return rootView;
     }
 
+
     @Override
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.btn_login:{
 
+                //Credentials.basic(username, password);
 
-                
+
                 Intent intent = new Intent(getActivity(),MainActivity.class);
                 getActivity().startActivity(intent);
                 break;

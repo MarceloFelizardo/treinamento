@@ -10,12 +10,6 @@ public interface GitHubServiceUser {
 
     public static final String URL_BaseUser = "https://api.github.com/";
 
-   // String teste = "";
-
-    //@GET("MarceloFelizardo")
-    //Call<User> dataUser();
-
-
     @GET("users/{name}")
     Call<User> dataUser(@Path("name") String name);
 }

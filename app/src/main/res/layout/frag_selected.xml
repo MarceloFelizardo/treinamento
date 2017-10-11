@@ -5,7 +5,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="8">
+    android:weightSum="9"
+    android:background="#b5f4e8">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/foto_sel"
@@ -15,7 +16,7 @@
         android:layout_margin="20dp"
         android:layout_marginTop="0dp"
         android:layout_weight="2"
-        android:src="#ff0000"
+        android:src="#267565"
         app:civ_border_color="#FF000000"
         app:civ_border_width="2dp" />
 
@@ -34,7 +35,7 @@
         android:id="@+id/txtID_sel"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.5"
+        android:layout_weight="0.8"
         android:gravity="center_vertical"
         android:paddingLeft="20dp"
         android:text="TextView"
@@ -45,7 +46,7 @@
         android:id="@+id/txtType_sel"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.5"
+        android:layout_weight="0.8"
         android:gravity="center_vertical"
         android:paddingLeft="20dp"
         android:text="TextView"
@@ -55,11 +56,21 @@
         android:id="@+id/txtBio_sel"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.5"
+        android:layout_weight="0.8"
         android:gravity="center_vertical"
         android:paddingLeft="20dp"
         android:text="TextView"
         android:textColor="@android:color/background_dark" />
+
+    <Button
+        android:id="@+id/btn_reposit"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_margin="20dp"
+        android:layout_weight="0.5"
+        android:background="#46b19d"
+        android:text="Repositorio"
+        android:textSize="16sp" />
 
 
 </LinearLayout>
