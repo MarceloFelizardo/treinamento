@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,11 +32,12 @@ public class FragSelected extends Fragment{
     public Button btnReposit;
     public User user;
     private String usuarioAtual;
+    private ProgressBar progressBar;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.frag_selected, container, false);
+        final View rootView = inflater.inflate(R.layout.frag_selected, container, false);
 
         fotoSel = (CircleImageView)rootView.findViewById(R.id.foto_sel);
         txtIDSel = (TextView)rootView.findViewById(R.id.txtID_sel);
@@ -43,6 +45,9 @@ public class FragSelected extends Fragment{
         txtTypeSel = (TextView)rootView.findViewById(R.id.txtType_sel);
         txtBioSel = (TextView)rootView.findViewById(R.id.txtBio_sel);
         btnReposit = (Button)rootView.findViewById(R.id.btn_reposit);
+
+        progressBar = (ProgressBar)rootView.findViewById(R.id.progress_bar_selected);
+        progressBar.setVisibility(rootView.VISIBLE);
 
         //Receber nome do usuário atual
         usuarioAtual = getArguments().getString("nome");
@@ -60,9 +65,13 @@ public class FragSelected extends Fragment{
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 if(!response.isSuccessful()){
+                    progressBar.setVisibility(rootView.GONE);
+
                     Toast.makeText(getActivity(), "Erro codigo: " + response.code(),
                             Toast.LENGTH_SHORT).show();
                 }else{
+                    progressBar.setVisibility(rootView.GONE);
+
                     //List<User> listUsers = new ArrayList<User>();
                     User user = new User();
                     user = response.body();
@@ -77,6 +86,8 @@ public class FragSelected extends Fragment{
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {
+                progressBar.setVisibility(rootView.GONE);
+
                 Toast.makeText(getActivity(), "Erro: " + t.getMessage(),
                         Toast.LENGTH_SHORT).show();
             }

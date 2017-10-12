@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -25,15 +26,19 @@ import static com.example.marce.treinamentopratico.GitHubService.URL_Base;
 public class FragListUsers extends Fragment{
 
     private RecyclerView recyclerView;
+    private ProgressBar progressBar;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.frag_list_users, container, false);
+        final View rootView = inflater.inflate(R.layout.frag_list_users, container, false);
+
+        progressBar = (ProgressBar)rootView.findViewById(R.id.pbHeaderProgress);
+        progressBar.setVisibility(rootView.VISIBLE);
 
         recyclerView = (RecyclerView)rootView.findViewById(R.id.my_recycler_view);
 
-        Retrofit retrofit = new Retrofit.Builder()
+        final Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(URL_Base)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
@@ -45,9 +50,13 @@ public class FragListUsers extends Fragment{
             @Override
             public void onResponse(Call<List<User>> call, Response<List<User>> response) {
                 if(!response.isSuccessful()){
+                    progressBar.setVisibility(rootView.GONE);
+
                     Toast.makeText(getActivity(), "Erro codigo: " + response.code(),
                             Toast.LENGTH_SHORT).show();
                 }else{
+                    progressBar.setVisibility(rootView.GONE);
+
                     List<User> listUsers = new ArrayList<User>();
                     listUsers = response.body();
 

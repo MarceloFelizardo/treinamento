@@ -8,6 +8,15 @@
     android:weightSum="9"
     android:background="#b5f4e8">
 
+    <ProgressBar
+        android:id="@+id/progress_bar_selected"
+        style="@style/Widget.AppCompat.ProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:visibility="gone" />
+
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/foto_sel"
         android:layout_width="191dp"
@@ -17,8 +26,20 @@
         android:layout_marginTop="0dp"
         android:layout_weight="2"
         android:src="#267565"
-        app:civ_border_color="#FF000000"
+        app:civ_border_color="#000000"
         app:civ_border_width="2dp" />
+
+    <!--de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/foto"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_margin="20dp"
+        android:layout_marginTop="0dp"
+        android:src="#ff0000"
+        app:civ_border_color="#FF000000"
+        app:civ_border_width="2dp" /-->
+
 
     <TextView
         android:id="@+id/txtLogin_sel"

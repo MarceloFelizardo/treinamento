@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 public class FragReposSelected extends Fragment{
@@ -20,13 +21,9 @@ public class FragReposSelected extends Fragment{
         txt2 = (TextView)rootView.findViewById(R.id.txt_repos_2);
         txt3 = (TextView)rootView.findViewById(R.id.txt_repos_3);
 
-        String name = getArguments().getString("name");
-        String id = getArguments().getString("id");
-        String url = getArguments().getString("url");
-
-        txt1.setText(name);
-        txt2.setText(id);
-        txt3.setText(url);
+        txt1.setText(getArguments().getString("name"));
+        txt2.setText(getArguments().getString("id"));
+        txt3.setText(getArguments().getString("url"));
 
         return rootView;
     }

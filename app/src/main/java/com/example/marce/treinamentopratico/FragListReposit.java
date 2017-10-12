@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -28,11 +29,15 @@ public class FragListReposit extends Fragment {
     private RecyclerView recyclerView;
     private List<Repos> listReposit;
     private String nomeReposAtual;
+    private ProgressBar progressBar;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.frag_list_reposit, container, false);
+        final View rootView = inflater.inflate(R.layout.frag_list_reposit, container, false);
+
+        progressBar = (ProgressBar)rootView.findViewById(R.id.progress_bar_list_repos);
+        progressBar.setVisibility(rootView.VISIBLE);
 
         nomeReposAtual = getArguments().getString("nome2");
 
@@ -50,9 +55,13 @@ public class FragListReposit extends Fragment {
             @Override
             public void onResponse(Call<List<Repos>> call, Response<List<Repos>> response) {
                 if(!response.isSuccessful()){
+                    progressBar.setVisibility(rootView.GONE);
+
                     Toast.makeText(getActivity(), "Erro codigo: " + response.code(),
                             Toast.LENGTH_SHORT).show();
                 }else{
+                    progressBar.setVisibility(rootView.GONE);
+
                     listReposit = new ArrayList<Repos>();
                     listReposit = response.body();
 
@@ -63,6 +72,8 @@ public class FragListReposit extends Fragment {
 
             @Override
             public void onFailure(Call<List<Repos>> call, Throwable t) {
+                progressBar.setVisibility(rootView.GONE);
+                
                 Toast.makeText(getActivity(), "Erro: " + t.getMessage(),
                         Toast.LENGTH_SHORT).show();
             }

@@ -1,19 +1,31 @@
 package com.example.marce.treinamentopratico;
 
+import android.app.Dialog;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.widget.CircularProgressDrawable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AppCompatDialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.example.marce.treinamentopratico.ChangeFragments;
 import okhttp3.Credentials;
+
+import static com.example.marce.treinamentopratico.R.id.dlg_btn_cancel;
 
 public class FragLogin extends Fragment implements View.OnClickListener{
 
@@ -33,18 +45,16 @@ public class FragLogin extends Fragment implements View.OnClickListener{
 
         btnAccount.setOnClickListener(this);
         btnLogin.setOnClickListener(this);
+        txtForgot.setOnClickListener(this);
 
         return rootView;
     }
-
 
     @Override
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.btn_login:{
-
                 //Credentials.basic(username, password);
-
 
                 Intent intent = new Intent(getActivity(),MainActivity.class);
                 getActivity().startActivity(intent);
@@ -54,7 +64,23 @@ public class FragLogin extends Fragment implements View.OnClickListener{
                ChangeFragments.trocaFrag((AppCompatActivity) getActivity(), new FragAccount(),R.id.local_login);
                 break;
             }
+            case R.id.txt_forgot:{
+                final Dialog dialog = new Dialog(getActivity());
+                dialog.setContentView(R.layout.dialog_password);
+                dialog.show();
+
+                Button btn_cancel = (Button)dialog.findViewById(dlg_btn_cancel);
+                btn_cancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.cancel();
+                    }
+                });
+                break;
+            }
         }
     }
+
+
 
 }
